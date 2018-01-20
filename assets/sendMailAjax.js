@@ -70,6 +70,9 @@ function loopSendEmail(jsonurl,tokenid) {
             } else {
               $(".sendmailajax-list").closest(".ui-dialog").find(".ui-dialog-buttonset .ui-button-text").html("Done"); // 2.06
               $(".sendmailajax-list").closest(".modal-dialog").find(".btn-default").html("Done"); // 2.50
+              // TODO no in the plugin
+              $("[data-send]").addClass("hidden");
+              // END
               $(".sendmailajax-list").prepend("<li><strong>Done</strong></li>");
             }
         },

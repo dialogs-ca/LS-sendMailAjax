@@ -254,8 +254,14 @@ class sendMailAjax extends \ls\pluginmanager\PluginBase {
         $oCriteria->compare('emailstatus',"OK");
 
         $dToday=dateShift(date("Y-m-d H:i:s"),"Y-m-d H:i:s", Yii::app()->getConfig("timeadjust"));
-        $oCriteria->addCondition("validfrom < :validfrom OR validfrom IS NULL");
-        $oCriteria->addCondition("validuntil > :validuntil OR validuntil IS NULL");
+
+        // TODO not in the plugin
+        // $oCriteria->addCondition("validfrom < :validfrom OR validfrom IS NULL");
+        // $oCriteria->addCondition("validuntil > :validuntil OR validuntil IS NULL");
+
+        $oCriteria->addCondition("validfrom < :validfrom OR validfrom='' OR validfrom IS NULL");
+        $oCriteria->addCondition("validuntil > :validuntil OR validuntil='' OR validuntil IS NULL");
+        //END
 
         $oCriteria->compare('usesleft',">0");
         $oCriteria->addCondition("blacklisted IS NULL OR blacklisted='' ");
